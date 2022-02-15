@@ -272,9 +272,9 @@ CUDA_VISIBLE_DEVICES=0 python -u train_kd.py \
 
 # CRD
 # lambda_kd=0.2 for CIFAR10, lambda_kd=0.8 for CIFAR100.
-CUDA_VISIBLE_DEVICES=0 python -u train_crd.py \
+CUDA_VISIBLE_DEVICES=2 python -u train_crd.py \
                            --save_root "./results/crd/" \
-                           --t_model "./results/base/base-c10-r110/model_best.pth.tar" \
+                           --t_model "./results/base/base-c10-r20/model_best.pth.tar" \
                            --s_init "./results/base/base-c10-r20/initial_r20.pth.tar" \
                            --data_name cifar10 \
                            --num_class 10 \
@@ -299,6 +299,3 @@ CUDA_VISIBLE_DEVICES=0 python -u train_dml.py \
                            --net2_name resnet20 \
                            --lambda_kd 1.0 \
                            --note dml-c10-r110-r20
-
-
-

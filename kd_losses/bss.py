@@ -4,10 +4,19 @@ from __future__ import division
 import torch
 import torch.nn as nn
 import torch.nn.functional as F
-from torch.autograd.gradcheck import zero_gradients
+# from torch.autograd.gradcheck import zero_gradients
 '''
 Modified by https://github.com/bhheo/BSS_distillation
 '''
+
+def zero_gradients(x):
+    if isinstance(x, torch.Tensor):
+        if x.grad is not None:
+            x.grad.detach_()
+            x.grad.zero_()
+    elif isinstance(x, collections.abc.Iterable):
+        for elem in x:
+            zero_gradients(elem)
 
 def reduce_sum(x, keepdim=True):
 	for d in reversed(range(1, x.dim())):

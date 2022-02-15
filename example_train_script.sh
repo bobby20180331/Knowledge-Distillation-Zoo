@@ -1,13 +1,21 @@
 # example scripts for running various KD methods
 # use cifar10, resnet110 (teacher) and resnet20 (student) as examples
 
-# Baseline
+# Baseline restnet20
 CUDA_VISIBLE_DEVICES=0 python -u train_base.py \
                            --save_root "./results/base/" \
                            --data_name cifar10 \
                            --num_class 10 \
                            --net_name resnet20 \
                            --note base-c10-r20
+
+# Baseline resnet110
+CUDA_VISIBLE_DEVICES=1 python -u train_base.py \
+                           --save_root "./results/base/" \
+                           --data_name cifar10 \
+                           --num_class 10 \
+                           --net_name resnet110 \
+                           --note base-c10-r110
 
 # Logits
 CUDA_VISIBLE_DEVICES=0 python -u train_kd.py \
